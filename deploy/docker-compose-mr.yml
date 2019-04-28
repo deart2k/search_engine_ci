@@ -1,0 +1,24 @@
+version: '3.3'
+services:
+
+  mongo:
+    image: mongo:${MONGO_VER}
+    volumes:
+      - mongo_db:/data/db
+    networks:
+      back_net:
+        aliases:
+        - post_db
+        - comment_db
+
+  rabbit:
+    image: rabbitmq:${RABBIT_VER}
+    networks:
+      - back_net
+
+
+volumes:
+  mongo_db:
+
+networks:
+  back_net:

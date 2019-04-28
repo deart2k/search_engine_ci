@@ -1,21 +1,6 @@
 version: '3.3'
 services:
 
-  mongo:
-    image: mongo:${MONGO_VER}
-    volumes:
-      - mongo_db:/data/db
-    networks:
-      back_net:
-        aliases:
-        - post_db
-        - comment_db
-
-  rabbit:
-    image: rabbitmq:${RABBIT_VER}
-    networks:
-      - back_net
-
   ui:
     image: ${DOCKERHUB_USERNAME}/search_engine_ui:${UI_VER}
     ports:
@@ -38,12 +23,6 @@ services:
  #     options:
  #       fluentd-address: localhost:24224
  #       tag: service.engine
-  
-  
-
-
-volumes:
-  mongo_db:
 
 networks:
   front_net:
